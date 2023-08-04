@@ -1,26 +1,29 @@
-let intervalId;
+const daysDisplay = document.querySelector("#days-display");
+const hoursDisplay = document.querySelector("#hours-display");
+const minutesDisplay = document.querySelector("#minutes-display");
+const secoundsDisplay = document.querySelector("#secounds-display");
 
-function countdown() {
-    const days = document.querySelector("#days-display");
-    const hours = document.querySelector("#hour-display");
-    const minutes = document.querySelector("#minutes-display");
-    const secounds = document.querySelector("#secounds-display");
+const countdownDate = new Date("Mar 3, 2024 00:00:00").getTime();
+const countdown = setInterval(() => {
+  const now = new Date().getTime();
+  let timeLeft = countdownDate - now;
 
-    if(secounds > 0) {
-        clearInterval(intervalId);
-        days.value = "00";
-        minutes.value = "00";
-        hours.value = "00";
-        secounds.value = "00";
-    } else if( secounds > 0 && secounds < 0 ) {
-        secounds.value--;
-    }
+  // Calculating the days, hours, minutes and seconds left
+  let days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+  let hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  let minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
+  // Set current values
+  daysDisplay.value = days;
+  hoursDisplay.value = hours;
+  minutesDisplay.value = minutes;
+  secoundsDisplay.value = seconds;
 
-}
+  // When countdown is over
+  if (timeLeft < 0) clearInterval(countdown);
+}, 1000);
 
 window.onload = () => {
-    if(!intervalId)
-        intervalId = setInterval(countdown, 1000)
-}
-
+  countdown();
+};

@@ -67,4 +67,10 @@ window.onload = function () {
   // Render readable string
   const finalDateDisplay = document.querySelector("#countdown-date-display");
   finalDateDisplay.innerHTML = getFinalDateInfo(finalDate);
+
+  const changeThemeButton = document.querySelector(".theme-container header");
+  changeThemeButton.addEventListener("click", () => {
+    const content = document.querySelector(".content");
+    content.classList.toggle("active")
+  });
 };

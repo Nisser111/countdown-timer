@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
 
+
 * {
     font-family: 'Rubik', sans-serif;
     margin: 0;
@@ -11,10 +12,12 @@
  --pageBg: hsla(0, 100%, 99%, 1) radial-gradient(circle, hsla(0, 100%, 99%, 1) 45%, hsla(40, 5%, 89%, 1) 100%);
  --mainBg: #F5F5F5;
  --mainFontColor: #000000;
+ --themeBg: rgba(54, 54, 54, 0.5);
  --complementaryColor: #4B0082;
  --displayBgColor: hsla(0, 100%, 99%, 1);
  --boxShadowColor: #747474;
  --blur: blur(13px);
+ --colorThemeRadius: 10px;
 }
 
 body {
@@ -111,6 +114,164 @@ main h3 {
     margin-top: 10%;
     font-size: clamp(0.7rem, 0.7vw, 0.8rem);
 }
+
+/* Changing theme panel */
+.theme-container {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: clamp(200px, 45vw, 550px);
+    background: var(--themeBg);
+    backdrop-filter: blur(20px);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    transform: translate(-50%);
+    transition: box-shadow 150ms ease;
+}
+
+.theme-container header {
+    width: 100%;
+    padding: max(6px, 0.35vw);
+}
+
+.theme-container header p {
+    font-size: clamp(1.25rem, 1.5vw, 1.5rem);;
+    text-align: center;
+    color: var(--mainFontColor);
+    opacity: 0.82;
+    text-transform: uppercase;
+    transition: opacity 300ms ease;
+}
+
+.theme-container:hover {
+    box-shadow: inset 0 7px 9px -7px var(--mainBg);
+}
+
+.theme-container:hover header {
+    cursor: pointer;
+}
+
+.theme-container:hover header p{
+    opacity: 1;
+}
+
+.theme-container .content {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    max-height: 0;
+    transition: max-height 700ms ease;
+}
+
+.theme-container .content.active {
+    max-height: 1000px;
+}
+
+.theme-container .content .theme-pattern{
+    position: relative;
+    width: 30%;
+    margin: 2% 0;
+    aspect-ratio: 1/1;
+    border-radius: var(--colorThemeRadius);
+    box-shadow: 4px 4px 16px -10px var(--boxShadowColor);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.theme-pattern.current:hover::after {
+    content: 'CURRENT';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(128, 128, 128, 0.5);
+    backdrop-filter: blur(1px);
+    border-radius: var(--colorThemeRadius);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.theme-pattern:hover::after {
+    content: 'CHANGE';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(128, 128, 128, 0.5);
+    backdrop-filter: blur(1px);
+    border-radius: var(--colorThemeRadius);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.theme-pattern-page-bg {
+    width: 100%;
+    height: 60%;
+    background: var(--pageBg);
+    border-top-left-radius: var(--colorThemeRadius);
+    border-top-right-radius: var(--colorThemeRadius);
+}
+
+.theme-pattern-main-font-color {
+    color: var(--mainFontColor);
+    font-size: calc(clamp(1.3rem, 1.85vw, 1.9rem) + 25%);
+}
+
+.theme-pattern-complementary-color {
+    width: 50%;
+    height: 40%;
+    background: var(--complementaryColor);
+    border-bottom-left-radius: var(--colorThemeRadius);
+}
+
+.theme-pattern-main-bg {
+    width: 50%;
+    height: 40%;
+    background: var(--mainBg);
+    border-bottom-right-radius: var(--colorThemeRadius);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.theme-pattern .light {
+    --pageBg: hsla(0, 100%, 99%, 1) radial-gradient(circle, hsla(0, 100%, 99%, 1) 45%, hsla(40, 5%, 89%, 1) 100%);
+    --mainBg: #F5F5F5;
+    --mainFontColor: #000000;
+    --complementaryColor: #4B0082;
+}
+
+.theme-pattern .dark {
+    --pageBg: hsla(0, 0%, 12%, 1) radial-gradient(circle, hsla(0, 0%, 12%, 1) 17%, hsla(0, 0%, 0%, 1) 100%);
+    --mainBg: rgba(83, 83, 83, 0.5);
+    --mainFontColor: #ffffff;
+    --complementaryColor: #70F1E9;
+}
+
+.theme-pattern .holiday {
+    --pageBg: hsla(0, 100%, 99%, 1) url(images/holidays.jpg) center no-repeat;
+    background-size: cover;
+    --mainBg: #DAC8AE80;
+    --mainFontColor: #ffffff;
+    --complementaryColor: #ED2939;
+}
+
+.theme-pattern .new-year {
+    --pageBg: hsla(0, 0%, 12%, 1) url(images/new_year.jpg) center no-repeat;
+    background-size: cover;
+    --mainBg: rgba(37, 37, 37, 0.6);
+    --mainFontColor: #ffffff;
+    --complementaryColor: #FACA16;
+}
+
 
 /* dark theme */
 body.dark {

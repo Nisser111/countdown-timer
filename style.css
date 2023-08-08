@@ -34,7 +34,7 @@ main {
     box-shadow: 6px 6px 21px -2px var(--boxShadowColor);
 }
 
-main h1 {
+main header h1 {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     box-orient: vertical;
@@ -48,9 +48,16 @@ main h1 {
     color: var(--mainFontColor);
 }
 
+main header p {
+    margin-top: 0.8%;
+    font-size: calc(clamp(1.1rem, 1.5vw, 1.75rem) - 25%);
+    text-align: center;
+    color: var(--mainFontColor);
+}
+
 main h3 {
     margin-top: 3%;
-    font-size: clamp(1.1rem, 1.5vw, 1.75rem);
+    font-size: clamp(1.2rem, 1.5vw, 1.8rem);
     font-weight: 300;
     text-align: center;
     color: var(--complementaryColor);

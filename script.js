@@ -77,6 +77,9 @@ window.onload = function () {
   if (localStorage.getItem("colorScheme")) {
     let preferColorScheme = localStorage.getItem("colorScheme");
     body.classList.replace(currentColorScheme, preferColorScheme);
+    currentColorScheme = preferColorScheme;
+    document.querySelector(".theme-pattern.current").classList.remove("current");
+    document.querySelector(".theme-pattern." + currentColorScheme).classList.add("current");
   } else if (
     // Detect user prefers color scheme
     window.matchMedia &&
@@ -84,6 +87,8 @@ window.onload = function () {
   ) {
     body.classList = "";
     body.classList.add("dark");
+    document.querySelector(".theme-pattern.current").classList.remove("current");
+    document.querySelector(".theme-pattern.dark").classList.add("current");
   }
 
   const changeThemeButton = document.querySelector(".theme-container header");
@@ -95,7 +100,7 @@ window.onload = function () {
     if (content.classList.contains("active")) {
       let themePatterns = document.querySelectorAll(".theme-pattern");
       themePatterns.forEach((el) =>
-        el.addEventListener("click", (e) => {
+        el.addEventListener("click", (e) => {            
           let choosedPattern = avaiavbleColorScheme.find(
             (el) => el === e.target.classList[1]
           );

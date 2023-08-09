@@ -1,92 +1,129 @@
 <!DOCTYPE html>
 <html lang="EN-en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Countdown timer</title>
 
-    <link rel="stylesheet" href="style.css" type="text/css">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.css' integrity='sha512-Z0kTB03S7BU+JFU0nw9mjSBcRnZm2Bvm0tzOX9/OuOuz01XQfOpa0w/N9u6Jf2f1OAdegdIPWZ9nIZZ+keEvBw==' crossorigin='anonymous'/>
-</head>
-<body class="birthday">
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.css"
+      integrity="sha512-Z0kTB03S7BU+JFU0nw9mjSBcRnZm2Bvm0tzOX9/OuOuz01XQfOpa0w/N9u6Jf2f1OAdegdIPWZ9nIZZ+keEvBw=="
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="birthday">
     <main>
-        <header>
-            <h1>MY 18 BIRTHDAY</h1>
-            <p id="countdown-date-display"></p>
-        </header>
-        <h3>coming soon</h3>
-        <article class="timer">
-            <section class="days">
-                <input type="number" min="0" max="366" class="display" id="days-display" value="365" readonly>
-                <label for="days-display">days</label>
-            </section>
-            <section class="hours">
-                <input type="number" min="0" max="99" class="display" id="hours-display" value="99" readonly>
-                <label for="hours-display">hours</label>
-            </section>
-            <section class="minutes">
-                <input type="number" min="0" max="60" class="display" id="minutes-display" value="59" readonly>
-                <label for="minutes-display">minutes</label>
-            </section>
-            <section class="secound">
-                <input type="number" min="0" max="60" class="display" id="secounds-display" value="59" readonly>
-                <label for="secound-display">secound</label>
-            </section>
-        </article>
+      <header>
+        <h1>18 BIRTHDAY</h1>
+        <p id="countdown-date-display"></p>
+      </header>
+      <h3>coming soon</h3>
+      <article class="timer">
+        <section class="days">
+          <input
+            type="number"
+            min="0"
+            max="366"
+            class="display"
+            id="days-display"
+            value="365"
+            readonly
+          />
+          <label for="days-display">days</label>
+        </section>
+        <section class="hours">
+          <input
+            type="number"
+            min="0"
+            max="99"
+            class="display"
+            id="hours-display"
+            value="99"
+            readonly
+          />
+          <label for="hours-display">hours</label>
+        </section>
+        <section class="minutes">
+          <input
+            type="number"
+            min="0"
+            max="60"
+            class="display"
+            id="minutes-display"
+            value="59"
+            readonly
+          />
+          <label for="minutes-display">minutes</label>
+        </section>
+        <section class="secound">
+          <input
+            type="number"
+            min="0"
+            max="60"
+            class="display"
+            id="secounds-display"
+            value="59"
+            readonly
+          />
+          <label for="secound-display">secound</label>
+        </section>
+      </article>
     </main>
 
     <section class="theme-container">
-        <header>
-            <p>Change theme</p>
-        </header>
+      <header>
+        <p>Change theme</p>
+      </header>
 
-        <div class="content">
-            <div class="theme-pattern light current">
-                <div class="theme-pattern-page-bg light"></div>
-                <div class="theme-pattern-complementary-color light"></div>
-                <div class="theme-pattern-main-bg light">
-                    <div class="theme-pattern-main-font-color light">Aa</div>
-                </div>
-            </div>
-            <div class="theme-pattern dark ">
-                <div class="theme-pattern-page-bg dark"></div>
-                <div class="theme-pattern-complementary-color dark"></div>
-                <div class="theme-pattern-main-bg dark">
-                    <div class="theme-pattern-main-font-color dark">Aa</div>
-                </div>
-            </div>
-            <div class="theme-pattern holiday">
-                <div class="theme-pattern-page-bg holiday"></div>
-                <div class="theme-pattern-complementary-color holiday"></div>
-                <div class="theme-pattern-main-bg holiday">
-                    <div class="theme-pattern-main-font-color holiday">Aa</div>
-                </div>
-            </div>
-            <div class="theme-pattern new-year">
-                <div class="theme-pattern-page-bg new-year"></div>
-                <div class="theme-pattern-complementary-color new-year"></div>
-                <div class="theme-pattern-main-bg new-year">
-                    <div class="theme-pattern-main-font-color new-year">Aa</div>
-                </div>
-            </div>
-            <div class="theme-pattern birthday">
-                <div class="theme-pattern-page-bg birthday"></div>
-                <div class="theme-pattern-complementary-color birthday"></div>
-                <div class="theme-pattern-main-bg birthday">
-                    <div class="theme-pattern-main-font-color birthday">Aa</div>
-                </div>
-            </div>
-            <div class="theme-pattern custom">
-                <div class="theme-pattern-page-bg new-year"></div>
-                <div class="theme-pattern-complementary-color new-year"></div>
-                <div class="theme-pattern-main-bg new-year">
-                    <div class="theme-pattern-main-font-color new-year">Aa</div>
-                </div>
-            </div>
+      <div class="content">
+        <div class="theme-pattern light current">
+          <div class="theme-pattern-page-bg light"></div>
+          <div class="theme-pattern-complementary-color light"></div>
+          <div class="theme-pattern-main-bg light">
+            <div class="theme-pattern-main-font-color light">Aa</div>
+          </div>
         </div>
-        
+        <div class="theme-pattern dark">
+          <div class="theme-pattern-page-bg dark"></div>
+          <div class="theme-pattern-complementary-color dark"></div>
+          <div class="theme-pattern-main-bg dark">
+            <div class="theme-pattern-main-font-color dark">Aa</div>
+          </div>
+        </div>
+        <div class="theme-pattern holiday">
+          <div class="theme-pattern-page-bg holiday"></div>
+          <div class="theme-pattern-complementary-color holiday"></div>
+          <div class="theme-pattern-main-bg holiday">
+            <div class="theme-pattern-main-font-color holiday">Aa</div>
+          </div>
+        </div>
+        <div class="theme-pattern new-year">
+          <div class="theme-pattern-page-bg new-year"></div>
+          <div class="theme-pattern-complementary-color new-year"></div>
+          <div class="theme-pattern-main-bg new-year">
+            <div class="theme-pattern-main-font-color new-year">Aa</div>
+          </div>
+        </div>
+        <div class="theme-pattern birthday">
+          <div class="theme-pattern-page-bg birthday"></div>
+          <div class="theme-pattern-complementary-color birthday"></div>
+          <div class="theme-pattern-main-bg birthday">
+            <div class="theme-pattern-main-font-color birthday">Aa</div>
+          </div>
+        </div>
+        <div class="theme-pattern custom">
+          <div class="custom-info">
+            <p>
+              <b>CUSTOM</b> <br />
+              COMING SOON
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

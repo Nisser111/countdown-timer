@@ -64,13 +64,56 @@ function getFinalDateInfo(date) {
 }
 
 window.onload = function () {
+  const body = document.querySelector("body");
+  const avaiavbleColorScheme = ["light", "dark", "holiday", "new-year", "birthday"];
+  let currentColorScheme = body.classList.value;
+
   // Render readable string
   const finalDateDisplay = document.querySelector("#countdown-date-display");
   finalDateDisplay.innerHTML = getFinalDateInfo(finalDate);
 
+
+  // Load color scheme from local storage if exist
+  if (localStorage.getItem("colorScheme")) {
+    let preferColorScheme = localStorage.getItem("colorScheme");
+    body.classList.replace(currentColorScheme, preferColorScheme);
+  } else if (
+    // Detect user prefers color scheme
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  ) {
+    body.classList = "";
+    body.classList.add("dark");
+  }
+
   const changeThemeButton = document.querySelector(".theme-container header");
   changeThemeButton.addEventListener("click", () => {
     const content = document.querySelector(".content");
-    content.classList.toggle("active")
+    content.classList.toggle("active");
+
+    // Changing color scheme
+    if (content.classList.contains("active")) {
+      let themePatterns = document.querySelectorAll(".theme-pattern");
+      themePatterns.forEach((el) =>
+        el.addEventListener("click", (e) => {
+          let choosedPattern = avaiavbleColorScheme.find(
+            (el) => el === e.target.classList[1]
+          );
+          if (!choosedPattern)
+            alert("Sorry! We have some problems. We can't do this for you.");
+          else {
+            body.classList = "";
+            body.classList.add(choosedPattern);
+            document
+              .querySelector(".theme-pattern.current")
+              .classList.remove("current");
+            e.target.classList.add("current");
+            currentColorScheme = choosedPattern;
+
+            localStorage.setItem("colorScheme", currentColorScheme);
+          }
+        })
+      );
+    }
   });
 };

@@ -5,7 +5,8 @@ const secoundsDisplay = document.querySelector("#secounds-display");
 
 let finalDate = new Date("March 3, 2024 05:15:17");
 
-const countdownDate = finalDate.getTime();
+function reloadCountdownTimer(finalDate) {
+  const countdownDate = finalDate.getTime();
 const countdown = setInterval(() => {
   const now = new Date().getTime();
   let timeLeft = countdownDate - now;
@@ -25,9 +26,10 @@ const countdown = setInterval(() => {
   // When countdown is over
   if (timeLeft < 0) clearInterval(countdown);
 }, 1000);
+}
 
 // Transform data from Date to readable string
-function getFinalDateInfo(date) {
+function getFinalDateInfo(date, isDatetimeLocalFormat = false) {
   const days = [
     "Sunday",
     "Monday",
@@ -51,16 +53,38 @@ function getFinalDateInfo(date) {
     "November",
     "December",
   ];
+
+  let dateInfo;
+
+  if(isDatetimeLocalFormat) {
+    let [dateString, timeString] = date.split("T");
+    let [year, month, days] = dateString.split("-");
+    let [hours, minutes] = timeString.split(":");
+
+    date = new Date(parseInt(year), parseInt(month) - 1, parseInt(days), parseInt(hours), parseInt(minutes));
+  }
+
   let nameOfDay = days[date.getDay()];
   let day = date.getDate();
-  let nameOfMounth = mounths[date.getMonth()];
+  let nameOfMonth = mounths[date.getMonth()];
   let year = date.getFullYear();
   let seconds = date.getSeconds().toString().padStart(2, "0");
   let minutes = date.getMinutes().toString().padStart(2, "0");
   let hours = date.getHours().toString().padStart(2, "0");
 
-  dateInfo = `${nameOfDay}, ${day} ${nameOfMounth} ${year} ${hours}:${minutes}:${seconds}`;
-  return dateInfo;
+  dateInfo = `${nameOfDay}, ${day} ${nameOfMonth} ${year} ${hours}:${minutes}:${seconds}`; 
+  
+  return {
+    nameOfDay: nameOfDay,
+    datetimeLocalFormat: `${year}-${(date.getMonth() + 1).toString().padStart(2, "0")}-${day.toString().padStart(2, "0")}T${hours}:${minutes}`,
+    dateInfo: dateInfo,
+    dateNormalFormat: date,
+  };
+}
+
+function reloadFinalDateDisplay(newFinalDate) {
+  const finalDateDisplay = document.querySelector("#countdown-date-display");
+  finalDateDisplay.innerHTML = getFinalDateInfo(newFinalDate).dateInfo;
 }
 
 window.onload = function () {
@@ -68,9 +92,12 @@ window.onload = function () {
   const avaiavbleColorScheme = ["light", "dark", "holiday", "new-year", "birthday"];
   let currentColorScheme = body.classList.value;
 
+  // Start countdownTimer
+  reloadCountdownTimer(finalDate);
+
+
   // Render readable string
-  const finalDateDisplay = document.querySelector("#countdown-date-display");
-  finalDateDisplay.innerHTML = getFinalDateInfo(finalDate);
+  reloadFinalDateDisplay(finalDate);
 
 
   // Load color scheme from local storage if exist
@@ -91,6 +118,44 @@ window.onload = function () {
     document.querySelector(".theme-pattern.dark").classList.add("current");
   }
 
+  // Edit title and final date
+  const editSettingBtn = document.querySelector("#edit-button");
+  const settingsWindow = document.querySelector("#settings");
+  const titleInput = document.querySelector("#settings input[type='text']");
+  const dateInput = document.querySelector("#settings input[type='datetime-local']");
+  const title = document.querySelector("main header h1");
+  const buttons = document.querySelectorAll("#settings button");
+
+  // Load current data to settings
+  titleInput.value = title.innerHTML;
+  dateInput.value = getFinalDateInfo(finalDate).datetimeLocalFormat;
+
+  editSettingBtn.addEventListener("click", () => {
+    settingsWindow.classList.toggle("active");
+
+    // Cancel
+    buttons[0].addEventListener("click", () => {
+      titleInput.value = title.innerHTML;
+      dateInput.value = getFinalDateInfo(finalDate).datetimeLocalFormat;
+
+      settingsWindow.classList.remove("active");
+    });
+
+    // Save
+    buttons[1].addEventListener("click", () => {
+      titleInput.value = title.innerHTML = titleInput.value;
+      let tempFinalDate = getFinalDateInfo(dateInput.value, true);
+      reloadFinalDateDisplay(tempFinalDate.dateNormalFormat);
+      finalDate = tempFinalDate.dateNormalFormat;
+      reloadCountdownTimer(finalDate);
+
+
+      settingsWindow.classList.remove("active");
+    });
+
+  });
+
+  // Onlcick changing theme panel
   const changeThemeButton = document.querySelector(".theme-container header");
   changeThemeButton.addEventListener("click", () => {
     const content = document.querySelector(".content");

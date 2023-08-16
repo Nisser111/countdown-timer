@@ -24,7 +24,10 @@ function reloadCountdownTimer(date) {
     secoundsDisplay.value = seconds.toString().padStart(2, "0");
 
     // When countdown is over
-    if (timeLeft < 0) clearInterval(countdown);
+    if (timeLeft < 0) {
+      clearInterval(countdown);
+      timerEnd();
+    };
   }, 1000);
 
   return countdown;
@@ -93,6 +96,10 @@ function getFinalDateInfo(date, isDatetimeLocalFormat = false) {
 function reloadFinalDateDisplay(newFinalDate) {
   document.querySelector("#countdown-date-display").innerHTML =
     getFinalDateInfo(newFinalDate).dateInfo;
+}
+
+function timerEnd() {
+  document.querySelector(".timer").classList.toggle("end");
 }
 
 window.onload = function () {
@@ -165,13 +172,18 @@ window.onload = function () {
 
     // Save button
     buttons[1].addEventListener("click", () => {
-      titleInput.value = title.innerHTML = titleInput.value;
       let tempFinalDate = getFinalDateInfo(dateInput.value, true);
-      reloadFinalDateDisplay(tempFinalDate.dateNormalFormat);
-      finalDate = tempFinalDate.dateNormalFormat;
-      clearInterval(previousCountdownId);
-      previousCountdownId = reloadCountdownTimer(finalDate);
-
+      if(tempFinalDate.dateNormalFormat.getTime() >= now.getTime()) {
+        titleInput.value = title.innerHTML = titleInput.value;
+        reloadFinalDateDisplay(tempFinalDate.dateNormalFormat);
+        finalDate = tempFinalDate.dateNormalFormat;
+        clearInterval(previousCountdownId);
+        previousCountdownId = reloadCountdownTimer(finalDate);
+        document.querySelector(".timer").classList.remove("end");
+      } else {
+        document.querySelector(".timer").classList.add("end");
+      }
+      
       settingsWindow.classList.remove("active");
     });
   });

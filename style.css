@@ -83,22 +83,6 @@ main header p {
   cursor: pointer;
 }
 
-/* main header h1::after{
-  position: absolute;
-  content: '\f304';
-  margin-left: 1%;
-  font-weight: 900;
-  font-family: 'Font Awesome 5 Free';
-  font-size: 0.6em;
-  right: 0;
-  top: 0;
-  transition: opacity 200ms ease;
-} */
-
-/* main header h1::after:hover {
-  opacity: 0.85;
-} */
-
 main header p {
   margin-top: 0.8%;
   font-size: calc(clamp(1.1rem, 1.5vw, 1.75rem) - 25%);
@@ -114,6 +98,7 @@ main h3 {
   color: var(--complementaryColor);
 }
 
+/* Timer */
 .timer {
   width: 90%;
   margin: 4.5% auto;
@@ -160,6 +145,46 @@ main h3 {
   text-transform: uppercase;
   margin-top: 10%;
   font-size: clamp(0.7rem, 0.7vw, 0.8rem);
+}
+
+/* Timer end */
+#timer-end-info {
+  position: absolute;
+  max-width: 0;
+  width: 80%;
+  padding: 0;
+  height: clamp(75px, 15vw, 110px);
+  aspect-ratio: auto;
+  transition: max-width 300ms ease-in;
+}
+
+#timer-end-info p {
+  font-size: calc(var(--mainFontSize) + 50%);
+  color: var(--complementaryColor);
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 500;
+  opacity: 0;
+}
+
+.timer.end #timer-end-info {
+  max-width: 80%;
+}
+
+.timer.end section:not(#timer-end-info) {
+  opacity: 0;
+}
+
+.timer.end #timer-end-info p span {
+  font-size: calc(var(--mainFontSize) - 15%);
+  font-weight: 400;
+  color: var(--mainFontColor);
+}
+
+.timer.end #timer-end-info p {
+  opacity: 1;
+  transition: opacity 300ms linear;
+  transition-delay: 300ms;
 }
 
 /* Changing theme panel */

@@ -26,6 +26,7 @@ The page shows a simple countdown timer with some functions. The user can set a 
 - [x] Make timer end animation
 - [ ] Enable user to create own custom theme
 - [ ] Enable user to notify by the email when timer end
+- [ ] Create buttons with fast times, for example now + 10 minutes, now + 1 hour etc.
 
 <br>
 

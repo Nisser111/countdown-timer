@@ -7,7 +7,7 @@
 
 The page shows a simple countdown timer with some functions. The user can set a date and the timer show him the time left. However, the user can change the theme and in the future create a custom theme. All settings are saved when the user left the page. This project wasn't created because I wanted to make a countdown timer but I want to make the base  to learn. Code changing the theme and how works with local storage in JavaScript. I have had trouble with stopping interval when the user was changing the final date. But in the end, I fixed this problem with some help from Stackoverflow.
 
-<h2 align="center"><a href="https://nisser111.github.io/countdown-timer/">DEMO</a></h2>
+<h2 align="center"><a href="https://countdown-timer-nisser111.netlify.app/">DEMO</a></h2>
 
 <br>
 

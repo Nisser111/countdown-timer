@@ -1,3 +1,12 @@
+const now = new Date();
+// const localStorageData = ;
+
+let finalDate =
+localStorage.getItem("finalDate") ? new Date(localStorage.getItem("finalDate")) : false
+|| new Date(now.getFullYear(), 11, 31, 0, 0, 0);
+
+console.log();
+
 function reloadCountdownTimer(date) {
   const daysDisplay = document.querySelector("#days-display");
   const hoursDisplay = document.querySelector("#hours-display");
@@ -112,11 +121,6 @@ window.onload = function () {
   const buttons = document.querySelectorAll("#settings .buttons-wrapper button");
   const changeThemeButton = document.querySelector(".theme-container header");
   const settingsShortcutsButtons = document.querySelectorAll("#settings .shortcuts-buttons button");
-
-  const now = new Date();
-  let finalDate =
-  new Date(localStorage.getItem("finalDate")) ||
-  new Date(now.getFullYear(), 11, 31, 0, 0, 0);
   
   const avaiavbleColorScheme = [
     "light",

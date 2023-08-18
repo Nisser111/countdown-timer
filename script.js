@@ -1,12 +1,3 @@
-const now = new Date();
-// const localStorageData = ;
-
-let finalDate =
-localStorage.getItem("finalDate") ? new Date(localStorage.getItem("finalDate")) : false
-|| new Date(now.getFullYear(), 11, 31, 0, 0, 0);
-
-console.log();
-
 function reloadCountdownTimer(date) {
   const daysDisplay = document.querySelector("#days-display");
   const hoursDisplay = document.querySelector("#hours-display");

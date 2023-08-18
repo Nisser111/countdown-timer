@@ -113,6 +113,11 @@ window.onload = function () {
   const changeThemeButton = document.querySelector(".theme-container header");
   const settingsShortcutsButtons = document.querySelectorAll("#settings .shortcuts-buttons button");
   
+  const now = new Date();
+  let finalDate =
+  localStorage.getItem("finalDate") ? new Date(localStorage.getItem("finalDate")) : false
+  || new Date(now.getFullYear(), 11, 31, 0, 0, 0);
+  
   const avaiavbleColorScheme = [
     "light",
     "dark",

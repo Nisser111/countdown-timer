@@ -109,8 +109,9 @@ window.onload = function () {
   const settingsWindow = document.querySelector("#settings");
   const titleInput = document.querySelector("#settings input[type='text']");
   const dateInput = document.querySelector("#settings input[type='datetime-local']");
-  const buttons = document.querySelectorAll("#settings button");
+  const buttons = document.querySelectorAll("#settings .buttons-wrapper button");
   const changeThemeButton = document.querySelector(".theme-container header");
+  const settingsShortcutsButtons = document.querySelectorAll("#settings .shortcuts-buttons button");
 
   const now = new Date();
   let finalDate =
@@ -155,12 +156,22 @@ window.onload = function () {
     document.querySelector(".theme-pattern.dark").classList.add("current");
   }
 
-  // Edit title and final date
+  // Settings
   titleInput.value = title.innerHTML;
   dateInput.value = getFinalDateInfo(finalDate).datetimeLocalFormat;
 
   editSettingBtn.addEventListener("click", () => {
     settingsWindow.classList.toggle("active");
+
+    // Shortcuts buttons
+    settingsShortcutsButtons.forEach( el => el.addEventListener("click", (e) => {
+      // Value in every buttons is equal number of minutes to add
+      const valueToAdd = parseInt(e.target.value);
+      let today = new Date();
+
+      let result = today.setMinutes( today.getMinutes() + valueToAdd );
+      dateInput.value = getFinalDateInfo(new Date(result)).datetimeLocalFormat;
+    }));
 
     // Cancel button
     buttons[0].addEventListener("click", () => {

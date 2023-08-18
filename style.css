@@ -500,6 +500,26 @@ body.birthday {
   font-family: "Rubik", sans-serif;
 }
 
+#settings .shortcuts-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+#settings .shortcuts-buttons button {
+  min-width: 14%;
+  background: transparent;
+  padding: 2% 1.2%;
+  border: 2px solid #3d3d3d;
+  border-radius: 5px;
+  color: #ffffff;
+  transition: border-color 300ms ease;
+}
+
+#settings .shortcuts-buttons button:hover {
+  border-color: var(--complementaryColor);
+  cursor: pointer;
+}
+
 #settings .buttons-wrapper {
   margin-top: 5%;
   display: flex;

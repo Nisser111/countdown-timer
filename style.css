@@ -586,7 +586,7 @@ body.birthday {
     margin-left: 5%;
   }
 
-  #timer-end-info {
+  .timer.end #timer-end-info {
     height: 60%;
   }
 }

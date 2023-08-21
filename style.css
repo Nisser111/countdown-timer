@@ -163,8 +163,7 @@ main h3 {
   position: absolute;
   max-width: 0;
   width: 80%;
-  padding: 0;
-  height: clamp(75px, 15vw, 110px);
+  padding: 15px; 
   aspect-ratio: auto;
   transition: max-width 300ms ease-in;
 }
@@ -586,22 +585,28 @@ body.birthday {
   #settings .shortcuts-buttons button:nth-child(even) {
     margin-left: 5%;
   }
+
+  #timer-end-info {
+    height: 60%;
+  }
 }
 
 @media screen and (max-width: 650px) {
   .theme-container .content {
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-wrap: nowrap;
   }
 
   .theme-container .content.active {
-    max-height: 95vh;
+    max-height: 75vh;
   }
 
   .theme-container .content .theme-pattern {
-    height: 15vh;
+    width: 40%;
+  }
+
+  .theme-container .content .theme-pattern:nth-child(even) {
+    margin-left: 10px;
   }
 }
 

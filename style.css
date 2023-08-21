@@ -33,6 +33,7 @@ body {
   justify-content: center;
   align-items: center;
   background: var(--pageBg);
+  overflow: hidden;
 }
 
 main {
@@ -587,6 +588,23 @@ body.birthday {
   }
 }
 
+@media screen and (max-width: 650px) {
+  .theme-container .content {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  .theme-container .content.active {
+    max-height: 95vh;
+  }
+
+  .theme-container .content .theme-pattern {
+    width: 50%;
+  }
+}
+
 @media screen and (max-width: 425px) {
   .timer {
     flex-direction: row;
@@ -612,22 +630,4 @@ body.birthday {
     width: 45%;
     margin-top: 5px;
   }
-}
-
-@media screen and (max-width: 650px) {
-  .theme-container .content {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: nowrap;
-  }
-
-  .theme-container .content.active {
-    max-height: 95vh;
-  }
-
-  .theme-container .content .theme-pattern {
-    width: 50%;
-  }
-  
 }

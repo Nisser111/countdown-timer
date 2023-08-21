@@ -163,7 +163,6 @@ main h3 {
   position: absolute;
   max-width: 0;
   width: 80%;
-  padding: 15px; 
   aspect-ratio: auto;
   transition: max-width 300ms ease-in;
 }
@@ -179,6 +178,7 @@ main h3 {
 
 .timer.end #timer-end-info {
   max-width: 80%;
+  padding: 15px;
 }
 
 .timer.end section:not(#timer-end-info) {
@@ -561,7 +561,7 @@ body.birthday {
     flex-direction: column;
   }
 
-  .timer section {
+  .timer section:not(#timer-end-info) {
     width: 100%;
     aspect-ratio: auto;
     padding: 7%;

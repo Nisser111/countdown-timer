@@ -1,4 +1,3 @@
-
 const now = new Date();
 let finalDate =
   localStorage.getItem("finalDate") ? new Date(localStorage.getItem("finalDate")) : false

@@ -60,6 +60,9 @@ main header h1 {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   box-orient: vertical;
+  max-width: 75%;
+  margin-left: auto;
+  margin-right: auto;
   overflow: hidden;
   font-size: clamp(2rem, 3vw, 3.5rem);
   font-weight: 400;
@@ -554,6 +557,10 @@ body.birthday {
 #settings .buttons-wrapper button:hover {
   background: var(--complementaryColor);
   cursor: pointer;
+}
+
+body.birthday #settings .buttons-wrapper button:hover {
+  color: #000000;
 }
 
 @media screen and (max-width: 768px) {
